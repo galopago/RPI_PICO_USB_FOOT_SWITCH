@@ -129,7 +129,13 @@ while True:
 		if key_pin_debounced.rose:
 			print("Switch released")
 			led.value = False
-			keyboard.release_all()  # ..."Release"!
-    	
+			
+			# New, single key release code
+			key = keys_pressed[i]
+			mod_key = control_key[i]
+			if control_key[i] == None:
+				keyboard.release(key)
+			else:
+				keyboard.release(mod_key, key)    	
 
 	time.sleep(0.01)
